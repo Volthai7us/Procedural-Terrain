@@ -85,7 +85,7 @@ void main()
     // Transform vertex  position into eye coordinates
     vec4 pos = ModelView * vPosition;
 	
-    vec3 L = normalize((lightPosition).xyz); //assuming light position provided in camera coordinates
+    vec3 L = normalize((lightPosition - pos).xyz); //assuming light position provided in camera coordinates
     vec3 E = normalize(-pos.xyz);
     vec3 H = normalize(L + E);
 
@@ -119,4 +119,4 @@ void main()
 
     color = ambient + diffuse + specular;
     color.a = 1.0;
-} 
+}
